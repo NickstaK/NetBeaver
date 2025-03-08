@@ -1,0 +1,27 @@
+# Verifying Database Connection in NetBeans
+
+This document outlines the steps to execute SQL queries in NetBeans to verify that the SQLite database connection is working correctly.
+
+Prerequisites:
+A working SQLite connection in NetBeans.
+The Chinook database should be accessible.
+Steps to Execute SQL Queries:
+1. Open the SQL Editor:
+Launch NetBeans and go to the Services tab.
+In the Databases section, right-click on the connection to your SQLite database (e.g., Chinook).
+Select Execute Command to open the SQL Editor.
+
+2. Write a Basic SQL Query:
+In the SQL Editor, write the following SQL query:
+
+SELECT * FROM album LIMIT 5;
+This query retrieves the first 5 records from the album table.
+
+3. Execute the Query:
+Click the Run button or press Ctrl + Enter to execute the query.
+Verify that the results appear in the output window. You should see a list of the first 5 albums from the album table.
+
+4. Troubleshooting:
+If you get an error message:
+Double-check the database connection to make sure it is configured correctly.
+Review the query for syntax issues or table/column name errors.
