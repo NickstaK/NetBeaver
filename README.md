@@ -9,6 +9,7 @@ SQLite (managed with DBeaver) for database storage and management.
 The goal is to create a modular, extensible foundation that can ingest, process, and analyze different datasets by swapping data sources and building on the analytics or interface over time. This is my first solo project, built to establish a scalable workflow for future data-driven applications.
 
 **Project Structure**
+
 data-pipeline/
 data/            - Datasets, SQLite DB files, or processed outputs
 docs/            - Documentation (e.g., this README, folder_structure.png)
@@ -26,6 +27,7 @@ tests/           - Test scripts for R and Java
 config/          - Configuration files (e.g., SQLite connection settings)
 
 **Prerequisites**
+
 To run this project, ensure you have:
 
 R: Version 4.x or higher (via RStudio; packages TBD, e.g., RSQLite, dplyr).
@@ -34,6 +36,7 @@ DBeaver: Version 23.x or higher, configured for SQLite.
 SQLite: A lightweight database (no separate server required).
 
 **Setup Instructions**
+
 Clone the Repository (if using Git): Run: git clone <repository-url> Then: cd data-pipeline
 Database Setup:
 Install SQLite if not already present (usually bundled with DBeaver).
@@ -52,22 +55,26 @@ Check tests/ for sample tests (e.g., tests/test_analytics.R for R, tests/TestApp
 Run R tests in RStudio or Java tests in NetBeans.
 
 **Usage**
+
 Add a New Dataset: Drop it in data/, adjust load_data.R if needed, and rerun the script.
 Extend Analytics: Add R scripts to src/R/ in RStudio.
 Modify Interface: Edit Java code in src/Java/ via NetBeans.
 Query Data: Use DBeaver to explore data/database.sqlite or tweak src/SQL/.
 
 **Current Features**
+
 Data ingestion from CSV files into SQLite (via R).
 Basic Java interface for viewing results (built in NetBeans).
 SQLite database schema for storing processed data.
 
 **Future Goals**
+
 Support additional dataset formats (e.g., JSON, Excel).
 Enhance the Java UI with interactive features.
 Automate the pipeline with a single command.
 
 **Notes**
+
 This is a work in progress—expect refinements as I learn!
 SQLite is stored in data/database.sqlite for simplicity; adjust the path in scripts if moved.
 Feedback is welcome as I build this base system.
