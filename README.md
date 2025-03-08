@@ -1,5 +1,6 @@
 NetBeaveR (Data Pipeline Base System)
 Overview
+
 This project is a full-stack data pipeline designed as a reusable base system for processing various datasets. It integrates:
 
 R (via RStudio) for data analytics and processing,
@@ -80,4 +81,5 @@ SQLite is stored in data/database.sqlite for simplicity; adjust the path in scri
 Feedback is welcome as I build this base system.
 
 **License**
+
 TBD (to be determined).
