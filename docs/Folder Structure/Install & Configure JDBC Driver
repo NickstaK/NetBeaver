@@ -1,0 +1,64 @@
+KAN-7: Install & Configure SQLite JDBC Driver
+
+Objective:
+To install and configure the SQLite JDBC Driver in NetBeans, enabling the connection between your Java application and an SQLite database.
+
+Steps:
+
+Download the SQLite JDBC Driver
+Visit a reliable source such as GitHub or Maven Central to download the latest version of the SQLite JDBC Driver (sqlite-jdbc-x.x.x.jar). Save the JAR file in your project directory or in an easily accessible location.
+
+Add the JDBC Driver to NetBeans Project
+To integrate the SQLite JDBC driver into your NetBeans project, follow these steps:
+
+Open NetBeans and navigate to your project in the Projects window.
+Right-click on your project name and select Properties.
+In the Project Properties window, click on Libraries from the left panel.
+Click Add JAR/Folder.
+In the file dialog that opens, navigate to the location where you saved the sqlite-jdbc-x.x.x.jar file.
+Select the JAR file and click Open.
+The driver should now appear under Libraries in your project's Properties.
+Verify Driver Installation in NetBeans Database Tool
+To ensure that NetBeans recognizes the SQLite JDBC driver, follow these steps:
+
+Open the Services tab in NetBeans.
+Expand the Databases section.
+Right-click Databases and choose New Connection.
+Select SQLite (JDBC) as the driver.
+If you see the SQLite JDBC driver listed in the connection options, it has been successfully integrated.
+Write and Execute a Test Java Program
+After the JDBC driver is added, write a small Java program to confirm that the driver is functioning properly.
+
+Example Code: SQLiteTest.java
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class SQLiteTest {
+    public static void main(String[] args) {
+        String url = "jdbc:sqlite:/path/to/your/database.db";  // Replace with actual path
+        try (Connection conn = DriverManager.getConnection(url)) {
+            if (conn != null) {
+                System.out.println("Connection to SQLite has been established.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+Replace /path/to/your/database.db with the actual path to your SQLite database.
+The program attempts to establish a connection to the database and prints a success message.
+Running the Program:
+
+In NetBeans, right-click on your SQLiteTest.java file.
+Select Run File.
+If the connection is successful, you will see the output: Connection to SQLite has been established.
+Troubleshooting
+If you encounter issues, consider the following steps:
+Ensure File Names Match: If you encounter a compilation error, ensure that the filename matches the public class name (e.g., SQLiteTest.java for the class public class SQLiteTest).
+Check JAR File: Ensure that you have the correct SQLite JDBC JAR version.
+Database Path: Double-check the path to your SQLite database file.

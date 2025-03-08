@@ -1,0 +1,32 @@
+[NickstaK@fedora NetBeaver]$ git remote -v
+origin	git@github.com:nickstak/NetBeaver.git (fetch)
+origin	git@github.com:nickstak/NetBeaver.git (push)
+[NickstaK@fedora NetBeaver]$ ssh -T git@github.com
+Hi NickstaK! You've successfully authenticated, but GitHub does not provide shell access.
+[NickstaK@fedora NetBeaver]$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    FolderStructure.png
+	deleted:    SSH GitHub.png
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	docs/
+	src/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[NickstaK@fedora NetBeaver]$ git add .
+[NickstaK@fedora NetBeaver]$ git commit -m "Updated project files" 
+[master adc2e03] Updated project files
+ 7 files changed, 48 insertions(+)
+ delete mode 100644 FolderStructure.png
+ delete mode 100644 SSH GitHub.png
+ create mode 100644 docs/Folder Structure/Breakdown.png
+ create mode 100644 docs/Folder Structure/NBeaveR_Structure.png
+ create mode 100644 docs/Folder Structure/TextFolderStruc
+ create mode 100644 src/JAVA/NetBeaveR/pom.xml
+ create mode 100644 src/JAVA/NetBeaveR/src/main/java/com/mycompany/netbeaver/NetBeaveR.java

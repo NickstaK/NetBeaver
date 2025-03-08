@@ -1,0 +1,38 @@
+# SQLite Database Connection Setup in NetBeans
+
+This document outlines the steps to configure a connection between **NetBeans** and an **SQLite** database. 
+
+### Prerequisites:
+- **NetBeans IDE** installed.
+- **DBeaver** installed (to retrieve the SQLite connection URL).
+- **SQLite JDBC Driver** (if it's not already available in NetBeans).
+
+### Steps to Establish the SQLite Connection:
+
+#### 1. Retrieve Connection URL from DBeaver:
+1. Open **DBeaver** and connect to the SQLite database.
+2. Right-click on the **SQLite connection** in the **Database Navigator**.
+3. Select **Edit Connection**.
+4. Copy the **JDBC URL** displayed in the **Connection Settings** ( `/home/NickstaK/sqlite/Chinook.db`).
+
+#### 2. Configure NetBeans for SQLite:
+1. Open **NetBeans** and go to the **Services** tab.
+2. Right-click on **Databases** and select **New Connection**.
+3. In the **New Connection Wizard**:
+    - Choose **SQLite (JDBC)** as the database driver.
+    - If **SQLite (JDBC)** is not listed, download the **SQLite JDBC driver** from [GitHub](https://github.com/xerial/sqlite-jdbc), and add it in NetBeans via **New Driver**.
+4. Paste the **JDBC URL** from DBeaver.
+5. Leave the **username** and **password** fields blank (unless configured otherwise).
+6. Click **Test Connection** to verify the connection.
+
+#### 3. Test the Connection:
+- If the connection is successful, you will see a message saying **"Connection successful"**.
+- Click **Finish** to save the connection.
+
+#### 4. Using the Database in NetBeans:
+- The new connection will appear under **Databases** in the **Services** tab.
+- You can now explore tables, run SQL queries, and interact with your SQLite database within NetBeans.
+
+### Troubleshooting:
+- Ensure that the SQLite JDBC driver is correctly added to NetBeans if the connection fails.
+- Double-check the file path in the JDBC URL to ensure it's correct.
