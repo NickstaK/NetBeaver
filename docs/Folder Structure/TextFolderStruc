@@ -1,0 +1,18 @@
+NetBeaveR/
+├── build/                          # Folder for build-generated files (compiled classes, packages, etc.)
+├── data/                           # Folder for raw data or datasets used in the project
+├── docs/                           # Documentation folder containing the structure and project-related info
+│   └── Folder Structure/           # Contains tables/images describing the entire project file structure
+├── scripts/                        # Folder for various scripts related to maintenance, R, setup, and SQL
+│   ├── maintenance/                # Folder for maintenance-related scripts
+│   ├── R/                          # Folder for R-related scripts
+│   ├── setup/                      # Folder for setup-related scripts
+│   └── SQL/                        # Folder for SQL-related scripts
+├── src/                            # Source code folder for the project
+│   └── JAVA/                       # Folder containing Java-related files
+│       ├── NetbeaverR/             # The NetbeaverR Java project folder
+│       │   ├── pom.xml             # Maven configuration file for managing dependencies and build
+│       │   └── src/                # Source code for the NetbeaverR Java project
+│       │       ├── main/           # Main Java source code (e.g., main application logic)
+│       │       └── test/           # Java test source code (e.g., unit tests)
+├── tests/                          # Folder for tests, possibly test scripts or results
