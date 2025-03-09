@@ -7,25 +7,6 @@ Java (via NetBeans IDE) for building a user interface and core application logic
 SQLite (managed with DBeaver) for database storage and management
 The goal of this project is to create a modular, extensible foundation that can ingest, process, and analyze different datasets by swapping data sources and building on the analytics or interface over time. This is my first solo project, created to establish a scalable workflow for future data-driven applications.
 
-Project Structure
-
-data-pipeline/
-├NetBeaveR/
-├── build/               # Compiled files and build-related outputs
-├── data/                # Datasets, SQLite DB files, or processed outputs
-│   └── database/        # SQLite database files
-├── docs/                # Documentation (e.g., this README, folder_structure.png)
-│   ├── connections/     # Database connection settings and documentation
-│   └── folder structure/ # Documentation on folder organization
-├── maintenance/         # Ongoing tasks (e.g., backups, updates)
-├── scripts/             # Utility and setup scripts
-│   ├── R/               # R scripts for analytics (RStudio)
-│   ├── setup/           # Initial setup scripts
-│   └── SQL/             # SQL queries and schema (DBeaver/SQLite)
-├── src/                 # Main source code
-│   └── JAVA/            # Java code for interface and logic (NetBeans)
-├── tests/               # Test scripts for R and Java
-└── config/              # Configuration files (e.g., SQLite connection settings)
 
 Prerequisites
 To run this project, ensure you have the following installed:
