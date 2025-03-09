@@ -1,0 +1,64 @@
+KAN 7-12: Troubleshooting NetBeans SQLite Connection
+This document outlines the steps for identifying and resolving connection issues between NetBeans and SQLite. It covers verifying the JDBC driver, ensuring the correct database path, and confirming the driver’s successful loading.
+
+Prerequisites:
+NetBeans IDE installed.
+SQLite JDBC Driver correctly installed in NetBeans.
+SQLite Database file accessible.
+
+Steps to Troubleshoot SQLite Connection in NetBeans:
+1. Verify JDBC Driver Installation:
+Open NetBeans and navigate to your project.
+Right-click on the project and select Properties.
+In the Project Properties window, go to Libraries.
+Confirm that the SQLite JDBC driver is listed under the Libraries section.
+If not, add the driver by following these steps:
+Download the SQLite JDBC driver from the official GitHub repository.
+In the Libraries tab, click Add JAR/Folder and select the downloaded .jar file.
+
+2. Confirm Database File Path in JDBC URL:
+Open the Services tab in NetBeans.
+Right-click on the SQLite Database connection and select Edit Connection.
+Check the JDBC URL for the SQLite connection.
+Example JDBC URL: jdbc:sqlite:/path/to/your/database.db.
+Ensure that the path to the database file is correct:
+If the path is absolute, make sure there are no typos and the file exists.
+If the path is relative, ensure the database is in the correct folder relative to the project directory.
+Double-check for typos or missing file extensions (e.g., .db).
+
+3. Ensure JDBC Driver is Properly Loaded:
+Right-click on Databases in the Services tab and choose New Connection.
+Select SQLite (JDBC) as the driver.
+If SQLite (JDBC) is missing, go back to Step 1 and add the driver manually.
+Ensure that the sqlite-jdbc.jar is included under Compile-time Libraries in the Project Properties window.
+
+4. Test the Connection:
+After configuring the connection, click Test Connection.
+If the connection is successful, you will see the message:
+"Connection successful".
+If the connection fails, review the error message:
+Driver Not Found: Ensure the correct SQLite JDBC driver version is installed.
+Connection Failed: Double-check the JDBC URL for typos or incorrect paths to the database.
+JDBC URL Error: Verify that the URL is correctly formatted (jdbc:sqlite:/path/to/database.db).
+
+5. Review Error Logs:
+If errors persist, open the Output window in NetBeans (View > Output) to view detailed logs.
+Look for error messages such as:
+Missing driver.
+Incorrect JDBC URL.
+File path issues.
+Take note of the specific errors for debugging and resolution.
+
+6. Retest After Fixing Issues:
+Once you've applied any necessary fixes (e.g., updating the JDBC driver, correcting the database path), try Test Connection again.
+If the connection is successful, click Finish to save the connection.
+
+Troubleshooting:
+Driver Not Found:
+Ensure the correct SQLite JDBC driver version is installed and configured in the pom.xml.
+Connection Failed:
+Double-check the JDBC URL for typos or incorrect paths to the database file. Make sure the file exists and is in the correct directory.
+JDBC URL Error:
+Verify that the JDBC URL is correctly formatted (e.g., jdbc:sqlite:/path/to/database.db).
+Ensure that the database file path is correct and accessible.
+
