@@ -1,0 +1,92 @@
+KAN 7-13: Optimizing SQLite Database Performance in NetBeans
+This document outlines the steps to optimize SQLite database performance in NetBeans. It covers the implementation of connection pooling using HikariCP, adjusting JDBC properties, and ensuring proper database indexing for improved query performance.
+
+Prerequisites:
+NetBeans IDE installed.
+SQLite JDBC Driver correctly installed in NetBeans.
+HikariCP dependency added to the pom.xml file.
+SQLite Database file accessible.
+
+Steps to Optimize SQLite Performance in NetBeans:
+
+Implement Connection Pooling Using HikariCP:
+HikariCP is used for connection pooling to improve database connection management.
+To configure HikariCP in NetBeans:
+Add the HikariCP dependency to your pom.xml file:
+
+<dependency>
+    <groupId>com.zaxxer</groupId>
+    <artifactId>HikariCP</artifactId>
+    <version>5.0.0</version> <!-- Use the latest version -->
+</dependency>
+
+Create a DatabasePool class to manage the connection pool:
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DatabasePool {
+    private static HikariDataSource dataSource;
+
+    static {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl("jdbc:sqlite:/path/to/your/database.db");
+        config.setMaximumPoolSize(10);  // Set appropriate pool size
+        config.setAutoCommit(false);    // Disable auto commit for batch processing
+        dataSource = new HikariDataSource(config);
+
+        // Apply PRAGMA settings to optimize performance
+        try (Connection conn = dataSource.getConnection(); Statement stmt = conn.createStatement()) {
+            stmt.execute("PRAGMA synchronous=OFF;");
+            stmt.execute("PRAGMA journal_mode=WAL;");
+        } catch (SQLException e) {
+            e.printStackTrace();  // Log any errors
+        }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
+}
+
+This will configure the connection pool and apply optimizations such as PRAGMA synchronous=OFF; and PRAGMA journal_mode=WAL;.
+Adjust JDBC Properties for Optimization:
+
+In the DatabasePool class, the following PRAGMA commands are executed to optimize SQLite database performance:
+PRAGMA synchronous=OFF; improves query execution speed by disabling synchronous commits.
+PRAGMA journal_mode=WAL; enables Write-Ahead Logging (WAL) for better concurrency and performance during large transactions.
+Ensure Proper Indexing:
+
+Indexes should be applied to frequently queried columns to speed up database operations. Ensure that columns used in WHERE clauses, JOIN operations, and ORDER BY are indexed.
+Example:
+
+CREATE INDEX idx_artist_name ON Artist (Name);
+Measure Query Execution Time:
+
+To measure the performance improvement, run queries before and after applying optimizations:
+
+long startTime = System.currentTimeMillis();
+// Execute your query here
+long endTime = System.currentTimeMillis();
+System.out.println("Query executed in: " + (endTime - startTime) + " milliseconds");
+Compare the execution time before and after optimizations to verify improvements.
+
+Troubleshooting:
+Connection Pooling Not Working:
+
+Ensure that the HikariCP dependency is correctly added to the pom.xml.
+Double-check the JDBC URL in the DatabasePool class to confirm the database file path is correct.
+PRAGMA Settings Not Taking Effect:
+
+Ensure that the PRAGMA settings are being executed when the connection is established (e.g., in the static block of the DatabasePool class).
+Slow Query Execution:
+
+Verify that indexes are applied to frequently queried columns (e.g., in the Artist table).
+Use the SQLite EXPLAIN keyword to analyze query performance:
+
+EXPLAIN QUERY PLAN SELECT * FROM Artist WHERE Name = 'AC/DC';
+Retest After Applying Changes:
+Once the optimizations are applied, retest the connection pooling, query execution times, and database indexing.
+If necessary, tweak the connection pool size or further optimize the PRAGMA settings based on the results.
